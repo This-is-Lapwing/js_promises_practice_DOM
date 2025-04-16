@@ -14,7 +14,7 @@ const firstPromise = new Promise((resolve, reject) => {
     if (e.button === 0) {
       document.removeEventListener('click', onClick);
       clearTimeout(timeout);
-      resolve('First promise was resolved on a left click in the document');
+      resolve('First promise was resolved');
     }
   };
 
@@ -27,11 +27,9 @@ const firstPromise = new Promise((resolve, reject) => {
 });
 
 const secondPromise = new Promise((resolve) => {
-  const onClick = (e) => {
-    if (e.button === 0 || e.button === 2) {
-      document.removeEventListener('click', onClick);
-      resolve('Second promise was resolved');
-    }
+  const onClick = () => {
+    document.removeEventListener('click', onClick);
+    resolve('Second promise was resolved');
   };
 
   document.addEventListener('click', onClick);
@@ -57,7 +55,6 @@ const thirdPromise = new Promise((resolve) => {
     if (leftClicked && rightClicked) {
       document.removeEventListener('click', onLeftClick);
       document.removeEventListener('contextmenu', onRightClick);
-
       resolve('Third promise was resolved');
     }
   };

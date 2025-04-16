@@ -58,10 +58,7 @@ const thirdPromise = new Promise((resolve) => {
       document.removeEventListener('click', onLeftClick);
       document.removeEventListener('contextmenu', onRightClick);
 
-      resolve(
-        'Third promise was resolved only after both left and ' +
-          'right clicks happened',
-      );
+      resolve('Third promise was resolved');
     }
   };
 
